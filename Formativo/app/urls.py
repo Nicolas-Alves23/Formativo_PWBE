@@ -27,4 +27,4 @@ urlpatterns = [
 ]
 
 
-# Usuário Nicolas Vilela que é um Gestor tem a seguinte senha Vg7@rLp9#Xq2!mDz
+# Usuário Nicolas que é um Gestor tem a seguinte senha Vg7@rLp9#Xq2!mDz
