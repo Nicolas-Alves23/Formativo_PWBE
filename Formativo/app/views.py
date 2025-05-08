@@ -11,11 +11,13 @@ class UsuarioListCreate(ListCreateAPIView):
     serializer_class = UsuarioSerializer
     permission_classes = [IsGestor]
 
+
 class UsuarioRetriveveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
     permission_classes = [IsGestor]
     lookup_field = 'pk'
+
 
 class DisciplinaListCreate(ListCreateAPIView):
     queryset = Disciplina.objects.all()
@@ -25,18 +27,21 @@ class DisciplinaListCreate(ListCreateAPIView):
         if self.request.method == 'GET':
             return [IsAuthenticated()]
         return [IsGestor()]
-    
+
+
 class DisciplinaRetriveveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = Disciplina.objects.all()
     serializer_class = DisciplinaSerializer
     permission_classs = [IsGestor]
     lookup_field = 'pk'
 
+
 class DisciplinaProfessorList(ListAPIView):
     serializer_class = DisciplinaSerializer
     permission_classes = [IsProfessor]
     def get_queryset(self):
         return Disciplina.objects.filter(professor = self.request.user)
+
 
 class ReservaAmbienteListCreate(ListCreateAPIView):
     queryset = Reserva_ambiente.objects.all()
@@ -53,12 +58,14 @@ class ReservaAmbienteListCreate(ListCreateAPIView):
         if professor_id:
             queryset = queryset.filter(professor_id=professor_id)
         return queryset
-    
+
+
 class ReservaAmbienteRetriveveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = Reserva_ambiente.objects.all()
     serializer_class = ReservaSerializer
     permission_classes = [IsGestorOuDono]
     lookup_field = 'pk'
+
 
 class ReservaAmbienteProfessorList(ListAPIView):
 
@@ -68,13 +75,16 @@ class ReservaAmbienteProfessorList(ListAPIView):
     def get_queryset(self):
         return Reserva_ambiente.objects.filter(professor = self.request.user)
 
+
 class LoginView(TokenObtainPairView):
     serializer_class = LoginSerializer
+
 
 class SalaListCreate(ListCreateAPIView):
     queryset = Sala.objects.all()
     serializer_class = SalaSerializer
     permission_classes = [IsGestor]
+
 
 class SalaRetriveveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = Sala.objects.all()

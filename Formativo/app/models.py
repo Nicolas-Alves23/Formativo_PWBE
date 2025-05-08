@@ -42,7 +42,6 @@ class Usuario(AbstractUser):
     def __str__(self):
         return f'{self.username} ({self.get_tipo_display()})'
 
-
 # Uma disciplique tem como chave estrangeira professor
 class Disciplina(models.Model):
     nome = models.CharField(_("Nome da discilplina, ex:'Fisíca' "),max_length=255)
@@ -54,6 +53,7 @@ class Disciplina(models.Model):
     def __str__(self):
         return self.nome
 
+# Sala criada para ser utilizada no 'Reserva_ambiente'
 class Sala(models.Model):
     nome = models.CharField(_("Nome da sala, ex: 'sala verde'"),max_length=90)
     tamanho = models.PositiveIntegerField()
@@ -62,6 +62,7 @@ class Sala(models.Model):
     def __str__(self):
         return self.nome
 
+# Modelo de banco de dados para a reserva de ambiente que conecta todas as informações
 class Reserva_ambiente(models.Model):
     data_inicio = models.DateField()
     data_termino = models.DateField()
@@ -74,6 +75,6 @@ class Reserva_ambiente(models.Model):
 
     periodo = models.CharField(max_length=1, choices=escolha_horario)
     
-    sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
-    professor = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null= True, blank= True, limit_choices_to={'tipo':'P'},verbose_name=_("Escolha qual professor"))
-    disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE,verbose_name=_("A disciplina"))
+    sala = models.ForeignKey(Sala, on_delete=models.CASCADE, verbose_name=_("Escolha a sala da Palestra:"))
+    professor = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null= True, blank= True, limit_choices_to={'tipo':'P'},verbose_name=_("Escolha qual Professor:"))
+    disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE,verbose_name=_("A Disciplina:"))
