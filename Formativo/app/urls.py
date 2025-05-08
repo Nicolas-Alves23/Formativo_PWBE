@@ -25,3 +25,6 @@ urlpatterns = [
     path('sala_crud/<int:pk>/', SalaRetriveveUpdateDestroy.as_view()),
 
 ]
+
+
+# Usuário Nicolas Vilela que é um Gestor tem a seguinte senha Vg7@rLp9#Xq2!mDz
