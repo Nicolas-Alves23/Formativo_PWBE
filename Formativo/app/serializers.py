@@ -1,3 +1,9 @@
+'''
+    Arquivo que é responsavel pela converter das informações para json
+    Dentro deste 
+'''
+
+
 # Import do timedelta e datetime para a validação na parte de Reserva de ambientes (verificar se datas)
 from datetime import timedelta, datetime
 from rest_framework import serializers
@@ -12,18 +18,23 @@ class SalaSerializer(serializers.ModelSerializer):
         model = Sala
         fields = '__all__'
     '''
-       Validação mencionada      
+       Validação mencionada no arquivo models 
+       Se nome for igual algum nome dentro do banco
+       Mensagem que o usuário recebera vai ser     
+       "Não é possível criar uma sala com o mesmo nome." 
     '''
     def validate(self, validated_data):
-
+        
+        # Para receber os nomes do banco de dados é necessário faer está linha de código
         nome = validated_data.get('nome')
         
-  
+        # Filtrando se nome = nome (se o nome passado é repetido)
         if Sala.objects.filter(nome=nome).exists():
             raise serializers.ValidationError("Não é possível criar uma sala com o mesmo nome.")
         
         return validated_data
 
+# Manipulando Usuário
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
