@@ -61,24 +61,26 @@ WSGI_APPLICATION = 'Gestão_escolar.wsgi.application'
 
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'cadastro',
-#         'USER': 'root',
-#         'PASSWORD': 'senai',
-#         'HOST': 'localhost',
-#         'PORT': '3306'
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cadastro',
+        'USER': 'root',
+        'PASSWORD': 'senai',
+        'HOST': 'localhost',
+        'PORT': '3306'
+    }
+}
+
+# CREATE DATABASE cadastro;
+# USE cadastro;
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -122,8 +124,8 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCES_TOKEN_LIFETIME': timedelta(minutes=50),
-    'REFRESH_TOKEN_LIFETIME': timedelta(minutes=50),
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=3),
+    'REFRESH_TOKEN_LIFETIME': timedelta(hours=3),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
 }
