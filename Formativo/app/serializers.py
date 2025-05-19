@@ -1,6 +1,9 @@
 '''
     Arquivo que é responsavel pela converter das informações para json
-    Dentro deste 
+    Dentro do arquivo foram feitas certas validações dos inputs do usuário
+    Algumas validações feitas no código foram feitas pela primeira vez 
+    Foram utilizadas diversas ferramentas inclusive IA's para o auxilio no desenvolvimento
+    
 '''
 
 
