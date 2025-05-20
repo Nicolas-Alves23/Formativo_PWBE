@@ -12,7 +12,7 @@ class IsProfessor(BasePermission):
 
 
 class IsGestorOuDono(BasePermission):
-    def has_permission(self, request, view, obj):
+    def has_object_permission(self, request, view, obj):
        if request.user.tipo == 'G':
            return True
        return obj.professor == request.user

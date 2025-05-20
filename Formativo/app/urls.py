@@ -13,7 +13,7 @@ urlpatterns = [
     # Disciplina
     path('disciplina/', DisciplinaListCreate.as_view()),
     path('disciplina_crud/<int:pk>/', DisciplinaRetriveveUpdateDestroy.as_view()),
-    path('professor_vendo/', DisciplinaProfessorList.as_view()),
+    path('disciplina_professor/', DisciplinaProfessorList.as_view()),
 
     # Reserva
     path('reserva/', ReservaAmbienteListCreate.as_view()),
@@ -23,6 +23,7 @@ urlpatterns = [
     # Sala
     path('sala/', SalaListCreate.as_view()),
     path('sala_crud/<int:pk>/', SalaRetriveveUpdateDestroy.as_view()),
+  
 
 ]
 

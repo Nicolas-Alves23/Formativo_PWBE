@@ -9,13 +9,13 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 class UsuarioListCreate(ListCreateAPIView):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
-    permission_classes = [IsGestor()]
+    permission_classes = [IsGestor]
 
 
 class UsuarioRetriveveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
-    permission_classes = [IsGestor()]
+    permission_classes = [IsGestor]
     lookup_field = 'pk'
 
 
@@ -32,13 +32,13 @@ class DisciplinaListCreate(ListCreateAPIView):
 class DisciplinaRetriveveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = Disciplina.objects.all()
     serializer_class = DisciplinaSerializer
-    permission_classs = [IsGestor()]
+    permission_classs = [IsGestor]
     lookup_field = 'pk'
 
 
 class DisciplinaProfessorList(ListAPIView):
     serializer_class = DisciplinaSerializer
-    permission_classes = [IsProfessor()]
+    permission_classes = [IsProfessor]
     def get_queryset(self):
         return Disciplina.objects.filter(professor = self.request.user)
 
@@ -46,7 +46,7 @@ class DisciplinaProfessorList(ListAPIView):
 class ReservaAmbienteListCreate(ListCreateAPIView):
     queryset = Reserva_ambiente.objects.all()
     serializer_class = ReservaAmbienteSerializer
-    # permission_classes = [IsGestor]
+
 
     def get_permissions(self):
         if self.request.method == 'GET':
@@ -64,14 +64,14 @@ class ReservaAmbienteListCreate(ListCreateAPIView):
 class ReservaAmbienteRetriveveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = Reserva_ambiente.objects.all()
     serializer_class = ReservaAmbienteSerializer
-    permission_classes = [IsGestorOuDono()]
+    permission_classes = [IsGestorOuDono]
     lookup_field = 'pk'
 
 
 class ReservaAmbienteProfessorList(ListAPIView):
 
     serializer_class = ReservaAmbienteSerializer
-    permission_classes = [IsProfessor()]
+    permission_classes = [IsProfessor]
 
     def get_queryset(self):
         return Reserva_ambiente.objects.filter(professor = self.request.user)
@@ -84,7 +84,7 @@ class LoginView(TokenObtainPairView):
 class SalaListCreate(ListCreateAPIView):
     queryset = Sala.objects.all()
     serializer_class = SalaSerializer
-    permission_classes = [IsGestor()]
+    permission_classes = [IsGestor]
     def get_permissions(self):
         if self.request.method == 'GET':
             return [IsAuthenticated()]
@@ -94,14 +94,7 @@ class SalaListCreate(ListCreateAPIView):
 class SalaRetriveveUpdateDestroy(RetrieveUpdateDestroyAPIView):
     queryset = Sala.objects.all()
     serializer_class = SalaSerializer
-    permission_classes = [IsGestor()]
+    permission_classes = [IsGestor]
     lookup_field = 'pk'
 
-class SalambienteProfessorList(ListAPIView):
-
-    serializer_class = ReservaAmbienteSerializer
-    permission_classes = [IsProfessor()]
-
-    def get_queryset(self):
-        return Reserva_ambiente.objects.filter(professor = self.request.user)
 
