@@ -4,10 +4,25 @@ O projeto visa o desenvolvimento de um sistema de gerenciamento de professores, 
 
 ## Começando o projeto 
 Para ser utilizada a aplicação é preciso fazer algumas checagens e completar os seguintes passos.
-1. Verifique se o Python está instalado da maneira correta 
-2. Faça um servidor local 
+1. Verifique se o Python está instalado da maneira correta.
+2. Faça um servidor local.
 ~~~
 python -m venv nome-servidor
 nome-servidor/Scripts/server # Ativando o servidor
 ~~~
-3. Instalar 
+3. Instalar as dependências `requiments.txt` com o comando `pip install -r requiments.txt`.
+4. Após todos esses passos verifique se sua maquina contém o Mysql Workbench instalado corretamente.
+5. Depois verificar no `settings.py` do projeto se as configurações do database estão corretas.
+~~~
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cadastro',
+        'USER': 'root',
+        'PASSWORD': 'senai',
+        'HOST': 'localhost',
+        'PORT': '3306'
+    }
+}
+~~~
+6. Como desfecho rode a aplicação com o comando `python manage.py runserver`
